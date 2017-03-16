@@ -283,11 +283,9 @@ class ApiClient
      */
     public function generateXPayToken($resourcePath, $query, $postData)
     {
-        $time = $this->getTime();
-        $secret = $this->config->getSecretKey();
-        $postData = is_string($postData) ? $postData : '';
-        $preHashString =  $secret . $time . $resourcePath . $query . $postData;
-        $hash = hash('sha256', rtrim($preHashString));
-        return "x:$time:$hash";
+        $time = time();
+        $sharedSecret = $this->config->getSecretKey();
+        $preHashString = $time.$resourcePath.$query.$postData;
+        return "xv2:".$time.":".hash_hmac('sha256', $preHashString, $sharedSecret);
     }
 }

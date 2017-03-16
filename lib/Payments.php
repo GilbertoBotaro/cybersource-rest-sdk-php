@@ -177,7 +177,7 @@ class Payments
      * @return \CyberSource\Model\TransactionSearchCollection
      * @throws \CyberSource\ApiException on non-2xx response
      */
-    public function searchPayment($request, $offset=null, $limit=null)
+    public function searchPayment($request)
     {
         
         // verify the required parameter 'request' is set
@@ -197,16 +197,7 @@ class Payments
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
-  
-        // query params
-        if ($offset !== null) {
-            $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
-        }// query params
-        if ($limit !== null) {
-            $queryParams['limit'] = $this->apiClient->getSerializer()->toQueryValue($limit);
-        }
-        
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());       
         
         
         // body params
