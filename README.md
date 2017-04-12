@@ -1,12 +1,12 @@
 # Cybersource REST API Library for PHP
 [![Build Status](https://travis-ci.org/CyberSource/cybersource-rest-sdk-php.png?branch=master)](https://travis-ci.org/CyberSource/cybersource-rest-sdk-php)
 
-PHP client bindings for the CyberSource REST API. Documentation for the CyberSource Payments REST API can be found [here](https://developer.visa.com/products/cybersource/reference#cybersource).
+PHP client bindings for the CyberSource REST API. Documentation for the CyberSource Payments REST API can be found [here](https://developer.visa.com/products/cybersource/reference).
 
 ## Prerequisites
 
 - PHP 5.3 or above
-   - [curl](http://php.net/manual/en/book.curl.php), [openssl](http://php.net/manual/en/book.openssl.php), [mbstring](http://php.net/manual/en/book.mbstring.php)
+   - [curl](http://php.net/manual/en/book.curl.php), [openssl](http://php.net/manual/en/book.openssl.php), [mbstring](http://php.net/manual/en/book.mbstring.php) extensions should be enabled.
 - A [VDP](https://developer.visa.com) account; create an application with "CyberSource Payment API" checked.
 
 ## Installing the SDK
@@ -30,7 +30,7 @@ Set your API key and Shared Secret key in [configuration.ini](conf/configuration
 
 ## Running Samples
 Enter the following command.
-```php
+```
 php RunTransaction.php
 ```
 When prompted, choose the transaction type you want to run, and provide the name of the payload file from the [samples](/samples) folder.
@@ -41,4 +41,4 @@ In order to run tests, you'll need [PHPUnit](https://phpunit.de). You'll also ne
 composer.phar dump-autoload
 ```
 
-If you installed PHPUnit with Composer, run the tests from the project root with the command ````vendor/bin/phpunit````.
+If you installed PHPUnit with Composer, run the tests from the project root with the command `vendor/bin/phpunit`.
