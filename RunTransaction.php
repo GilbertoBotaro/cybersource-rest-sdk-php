@@ -26,7 +26,6 @@ class RunTransaction {
 		$conf = parse_ini_file('configuration.ini');
 		if(!isset($conf['apiKey']) || empty($conf['apiKey']) || !isset($conf['sharedSecret']) || empty($conf['sharedSecret'])) {
 			throw new ApiException("apiKey or secret key is not set in configuration.ini", 400);
-			$this->config = new Configuration($conf['apiKey'], $conf['sharedSecret']);
         }
         if(isset($conf['proxy']) && !empty($conf['proxy'])) {
         	if(isset($conf['proxyUsername']) && !empty($conf['proxyUsername'])) {
