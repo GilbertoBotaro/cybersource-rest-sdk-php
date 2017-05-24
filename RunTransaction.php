@@ -24,11 +24,19 @@ class RunTransaction {
 
 	function __construct() {
 		$conf = parse_ini_file('configuration.ini');
-		if(isset($conf['apiKey']) && !empty($conf['apiKey']) && isset($conf['sharedSecret']) && !empty($conf['sharedSecret'])) {
-			$this->config = new Configuration($conf['apiKey'], $conf['sharedSecret']);
+		if(!isset($conf['apiKey']) || empty($conf['apiKey']) || !isset($conf['sharedSecret']) || empty($conf['sharedSecret'])) {
+			throw new ApiException("apiKey or secret key is not set in configuration.ini", 400);
         }
-        else {
-        	throw new ApiException("apiKey or secret key is not set in configuration.ini", 400);
+        if(isset($conf['proxy']) && !empty($conf['proxy'])) {
+        	if(isset($conf['proxyUsername']) && !empty($conf['proxyUsername'])) {
+        		$proxyAuth = $conf["proxyUsername"];
+        		$proxyAuth.= (isset($conf['proxyPassword']) && !empty($conf['proxyPassword'])) ? ':'.$conf["proxyPassword"] : '';
+        		$this->config = new Configuration($conf['apiKey'], $conf['sharedSecret'], $conf['proxy'], $proxyAuth);
+        	} else {
+        		$this->config = new Configuration($conf['apiKey'], $conf['sharedSecret'], $conf['proxy']);
+        	}
+        } else {
+        	$this->config = new Configuration($conf['apiKey'], $conf['sharedSecret']);
         }
 	}
 

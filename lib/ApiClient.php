@@ -188,6 +188,13 @@ class ApiClient
             curl_setopt($curl, CURLOPT_VERBOSE, 0);
         }
 
+        //proxy settings
+        if($this->config->getProxy() != null) {
+            curl_setopt($curl, CURLOPT_PROXY, $this->config->getProxy());
+        }
+        if($this->config->getProxyAuth() != null) {
+            curl_setopt($curl, CURLOPT_PROXYUSERPWD, $this->config->getProxyAuth());
+        }
         // obtain the HTTP response headers
         curl_setopt($curl, CURLOPT_HEADER, 1);
 
