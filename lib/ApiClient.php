@@ -188,6 +188,13 @@ class ApiClient
             curl_setopt($curl, CURLOPT_VERBOSE, 0);
         }
 
+        //proxy settings
+        if($this->config->getProxy() != null) {
+            curl_setopt($curl, CURLOPT_PROXY, $this->config->getProxy());
+        }
+        if($this->config->getProxyAuth() != null) {
+            curl_setopt($curl, CURLOPT_PROXYUSERPWD, $this->config->getProxyAuth());
+        }
         // obtain the HTTP response headers
         curl_setopt($curl, CURLOPT_HEADER, 1);
 
@@ -283,11 +290,9 @@ class ApiClient
      */
     public function generateXPayToken($resourcePath, $query, $postData)
     {
-        $time = $this->getTime();
-        $secret = $this->config->getSecretKey();
-        $postData = is_string($postData) ? $postData : '';
-        $preHashString =  $secret . $time . $resourcePath . $query . $postData;
-        $hash = hash('sha256', rtrim($preHashString));
-        return "x:$time:$hash";
+        $time = time();
+        $sharedSecret = $this->config->getSecretKey();
+        $preHashString = $time.$resourcePath.$query.$postData;
+        return "xv2:".$time.":".hash_hmac('sha256', $preHashString, $sharedSecret);
     }
 }

@@ -93,7 +93,7 @@ class Voids
      *
      * @param string $id Capture transaction id (required)
      * @param \CyberSource\Model\VoidRequest $request Void request data (optional)
-     * @return \CyberSource\Model\Void
+     * @return \CyberSource\Model\Voids
      * @throws \CyberSource\ApiException on non-2xx response
      */
     public function voidCapture($id, $request=null)
@@ -147,19 +147,19 @@ class Voids
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\CyberSource\Model\Void'
+                $headerParams, '\CyberSource\Model\Voids'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Void', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Voids', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Void', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Voids', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -232,19 +232,19 @@ class Voids
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\CyberSource\Model\Void'
+                $headerParams, '\CyberSource\Model\Voids'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Void', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Voids', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Void', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Voids', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -317,19 +317,19 @@ class Voids
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\CyberSource\Model\Void'
+                $headerParams, '\CyberSource\Model\Voids'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Void', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Voids', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Void', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Voids', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -348,7 +348,7 @@ class Voids
      *
      * @param string $id Sales transaction id (required)
      * @param \CyberSource\Model\VoidRequest $request Void request data (optional)
-     * @return \CyberSource\Model\Void
+     * @return \CyberSource\Model\Voids
      * @throws \CyberSource\ApiException on non-2xx response
      */
     public function voidSale($id, $request=null)
@@ -402,19 +402,19 @@ class Voids
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\CyberSource\Model\Void'
+                $headerParams, '\CyberSource\Model\Voids'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Void', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Voids', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Void', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Voids', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -432,7 +432,7 @@ class Voids
      * Retrieve a void
      *
      * @param string $id Unique identifier for the transaction (required)
-     * @return \CyberSource\Model\Void
+     * @return \CyberSource\Model\Voids
      * @throws \CyberSource\ApiException on non-2xx response
      */
     public function getVoid($id)
@@ -482,19 +482,19 @@ class Voids
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\CyberSource\Model\Void'
+                $headerParams, '\CyberSource\Model\Voids'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Void', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\CyberSource\Model\Voids', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Void', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\CyberSource\Model\Voids', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }

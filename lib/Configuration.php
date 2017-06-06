@@ -121,14 +121,36 @@ class Configuration
      */
     protected $sslVerification = true;
 
+    protected $proxy;
+    protected $proxyAuth;
+
+    public function getProxy() {
+        return $this->proxy;
+    }
+
+    public function getProxyAuth() {
+        return $this->proxyAuth;
+    }
+
+    public function setProxy($proxy) {
+        $this->proxy = $proxy;
+        return $this;
+    }
+
+    public function setProxyAuth($proxyAuth) {
+        $this->proxyAuth = $proxyAuth;
+        return $this;
+    }
     /**
      * Constructor
      */
-    public function __construct($apiKey, $secretKey)
+    public function __construct($apiKey, $secretKey, $proxy=null, $proxyAuth = null)
     {
         $this->tempFolderPath = sys_get_temp_dir();
         $this->apiKey = $apiKey;
         $this->secretKey = $secretKey;
+        $this->proxy = $proxy;
+        $this->proxyAuth = $proxyAuth;
     }
 
     /**
